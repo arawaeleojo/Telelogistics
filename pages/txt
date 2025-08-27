@@ -1,314 +1,490 @@
-<!-- Services Grid Section -->
-<section class="section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="section-title center" data-aos="fade-up">Comprehensive Solutions</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Explore our range of specialized services</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Tele Logistics</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2379bd;
+            --primary-dark: #1a5a8a;
+            --primary-light: #e6f0fa;
+            --secondary: #e20000;
+            --secondary-light: #ffebeb;
+            --dark: #1a1a1a;
+            --dark-80: #333333;
+            --dark-60: #666666;
+            --dark-40: #999999;
+            --dark-20: #cccccc;
+            --light: #ffffff;
+            --light-80: #f5f5f5;
+            --light-60: #eaeaea;
+            --light-40: #e0e0e0;
+            --light-20: #d6d6d6;
+            --success: #00c853;
+            --warning: #ffab00;
+            --danger: #ff3d00;
+            --info: #00b8d4;
+            --font-main: "Inter", sans-serif;
+            --font-heading: "Playfair Display", serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-family: var(--font-heading);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -12px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .section-title.center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .service-card-grid {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 35px 30px;
+            height: 100%;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--light-40);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card-grid:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(35, 121, 189, 0.15);
+            border-color: var(--primary);
+        }
+
+        .service-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            opacity: 0.3;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .service-card-grid:hover .service-icon {
+            background: var(--primary);
+            color: var(--light);
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            z-index: 1;
+            position: relative;
+        }
+
+        .service-description {
+            color: var(--dark-60);
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 25px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+            color: var(--dark-80);
+            font-size: 0.95rem;
+        }
+
+        .service-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .service-cta {
+            margin-top: auto;
+            z-index: 1;
+            position: relative;
+        }
+
+        .btn-service {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-service:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(35, 121, 189, 0.3);
+            color: white;
+        }
+
+        .services-section {
+            padding: 60px 0;
+        }
+
+        .pattern-dots {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: radial-gradient(var(--primary-light) 2px, transparent 2px);
+            background-size: 15px 15px;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .pattern-dots-1 {
+            top: 10%;
+            left: 5%;
+        }
+
+        .pattern-dots-2 {
+            bottom: 10%;
+            right: 5%;
+        }
+
+        @media (max-width: 992px) {
+            .service-number {
+                font-size: 4rem;
+            }
+            
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .service-card-grid {
+                padding: 25px 20px;
+            }
+            
+            .service-number {
+                font-size: 3.5rem;
+                top: 15px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title">Our Services</h1>
+                    <p class="hero-subtitle">Comprehensive telecom, energy and infrastructure solutions designed to drive performance, improve efficiency, and ensure long-term resilience across Africa.</p>
+                    <a href="#services" class="btn btn-light btn-lg">Explore Our Services</a>
+                </div>
             </div>
         </div>
+        <div class="pattern-dots pattern-dots-1"></div>
+        <div class="pattern-dots pattern-dots-2"></div>
+    </section>
 
-        <!-- Services Carousel -->
-        <div class="services-carousel" data-aos="fade-up">
-            <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- Slide 1 (Mobile: Service 1) -->
-                    <div class="carousel-item active">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">01</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <h3>Network Enhancement & Optimization</h3>
-                                    <p>We empower telecom operators to fine-tune their network performance with
-                                        targeted, data-driven improvements ensuring stronger coverage and smarter
-                                        resource allocation.</p>
-                                    <ul class="service-features">
-                                        <li>Outdoor coverage enhancement strategies</li>
-                                        <li>Quality verification and system auditing</li>
-                                        <li>RF material configuration and deployment</li>
-                                        <li>Satellite integration and signal distribution</li>
-                                        <li>Network-grade cabling and switch installations</li>
-                                        <li>Sustainable energy options: Solar, Wind & Hybrid Systems</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Optimize Your
-                                            Network</a>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Services Grid Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title center">Comprehensive Solutions</h2>
+                    <p class="text-muted">Explore our range of specialized services</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">01</span>
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                    </div>
-
-                    <!-- Slide 2 (Mobile: Service 2) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">02</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-tasks"></i>
-                                    </div>
-                                    <h3>Network Quality Oversight</h3>
-                                    <p>Reliable networks start with consistent quality checks. Our Quality
-                                        Management division operates independently to monitor traffic patterns and
-                                        enhance user experience.</p>
-                                    <ul class="service-features">
-                                        <li>Bandwidth prioritization using QoS</li>
-                                        <li>Performance reviews and service assurance</li>
-                                        <li>Traffic analysis to detect and eliminate bottlenecks</li>
-                                        <li>Preventive maintenance to reduce system downtime</li>
-                                        <li>Real-time network monitoring solutions</li>
-                                        <li>Proactive issue resolution protocols</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Ensure Quality</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 (Mobile: Service 3) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">03</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-server"></i>
-                                    </div>
-                                    <h3>IT Strategy & Infrastructure Services</h3>
-                                    <p>From data to dashboards, our IT services are tailored to help organizations
-                                        meet their digital goals with precision and cost-efficiency.</p>
-                                    <ul class="service-features">
-                                        <li>Scalable infrastructure optimization</li>
-                                        <li>Advanced data analytics and big data support</li>
-                                        <li>Custom IT governance frameworks</li>
-                                        <li>Strategic sourcing and vendor procurement</li>
-                                        <li>Real-time performance tracking systems</li>
-                                        <li>Cloud integration and migration services</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Develop Your
-                                            Strategy</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 (Mobile: Service 4) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">04</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-hard-hat"></i>
-                                    </div>
-                                    <h3>Civil Works & Tower Construction</h3>
-                                    <p>We manage site development from the ground up offering complete tower setup,
-                                        infrastructure design and seamless equipment deployment.</p>
-                                    <ul class="service-features">
-                                        <li>Site preparation and clearing</li>
-                                        <li>RF integration and commissioning</li>
-                                        <li>Secure access road creation</li>
-                                        <li>Tower foundation and structural build-out</li>
-                                        <li>Safety-focused project execution</li>
-                                        <li>Environmental compliance and reporting</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Start Your Project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5 (Mobile: Service 5) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">05</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-headset"></i>
-                                    </div>
-                                    <h3>Managed Network Support</h3>
-                                    <p>We provide lifecycle support for network equipment, maintaining manufacturer
-                                        standards and adapting to environmental factors.</p>
-                                    <ul class="service-features">
-                                        <li>Preventive system servicing</li>
-                                        <li>24/7 monitoring and diagnostics</li>
-                                        <li>Field support and power systems management</li>
-                                        <li>Remote troubleshooting and maintenance</li>
-                                        <li>Spare parts management and logistics</li>
-                                        <li>Performance reporting and analytics</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Get Support</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6 (Mobile: Service 6) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">06</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-wifi"></i>
-                                    </div>
-                                    <h3>Coverage Optimization</h3>
-                                    <p>We implement high performance connectivity solutions that improve signal
-                                        strength in any environment, enhancing user satisfaction.</p>
-                                    <ul class="service-features">
-                                        <li>Distributed Antenna Systems (DAS)</li>
-                                        <li>External antenna setups</li>
-                                        <li>Router positioning strategies</li>
-                                        <li>Signal amplifiers and repeaters</li>
-                                        <li>5G readiness assessment and implementation</li>
-                                        <li>In-building wireless solutions</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Optimize Coverage</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 7 (Mobile: Service 7) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">07</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-shield-alt"></i>
-                                    </div>
-                                    <h3>Integrated Security Systems</h3>
-                                    <p>We provide physical and cyber-secure environments through advanced monitoring
-                                        and access control systems that are scalable and future ready.</p>
-                                    <ul class="service-features">
-                                        <li>CCTV monitoring systems</li>
-                                        <li>Intrusion alarms and perimeter defenses</li>
-                                        <li>Intelligent fire detection systems</li>
-                                        <li>Smart access control and gate automation</li>
-                                        <li>Intercom and audio entry platforms</li>
-                                        <li>Cybersecurity infrastructure assessment</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Enhance Security</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 8 (Mobile: Service 8) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">08</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-solar-panel"></i>
-                                    </div>
-                                    <h3>Sustainable Power Systems</h3>
-                                    <p>Our engineering team designs and installs reliable power systems to ensure
-                                        uptime, protect equipment, and reduce environmental impact.</p>
-                                    <ul class="service-features">
-                                        <li>Solar and Hybrid power integration</li>
-                                        <li>UPS and backup systems</li>
-                                        <li>Transformers, Rectifiers and industrial-grade generators</li>
-                                        <li>Energy efficiency audits and consulting</li>
-                                        <li>Predictive maintenance tools implementation</li>
-                                        <li>Remote power management systems</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Power Your
-                                            Operations</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 9 (Mobile: Service 9) -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-md-8 col-lg-4">
-                                <div class="service-card-extended">
-                                    <span class="service-number">09</span>
-                                    <div class="card-icon">
-                                        <i class="fas fa-building"></i>
-                                    </div>
-                                    <h3>Smart Facility Management</h3>
-                                    <p>We streamline building operations with centralized tools for asset tracking,
-                                        maintenance scheduling and space planning to enhance efficiency.</p>
-                                    <ul class="service-features">
-                                        <li>Facility audits and condition assessments</li>
-                                        <li>Custom maintenance frameworks</li>
-                                        <li>Building automation technologies</li>
-                                        <li>Integrated security and monitoring systems</li>
-                                        <li>Energy management solutions</li>
-                                        <li>Space utilization optimization</li>
-                                    </ul>
-                                    <div class="service-cta">
-                                        <a href="index.html#contact" class="btn btn-light">Manage Facilities</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3 class="service-title">Network Enhancement & Optimization</h3>
+                        <p class="service-description">We empower telecom operators to fine-tune their network performance with targeted, data-driven improvements.</p>
+                        <ul class="service-features">
+                            <li>Outdoor coverage enhancement</li>
+                            <li>Quality verification and auditing</li>
+                            <li>RF material configuration</li>
+                            <li>Satellite integration</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Optimize Your Network</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                
+                <!-- Service 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">02</span>
+                        <div class="service-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="service-title">Network Quality Oversight</h3>
+                        <p class="service-description">Reliable networks start with consistent quality checks and strategic bandwidth allocation.</p>
+                        <ul class="service-features">
+                            <li>Bandwidth prioritization (QoS)</li>
+                            <li>Performance reviews</li>
+                            <li>Traffic analysis</li>
+                            <li>Preventive maintenance</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Ensure Quality</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">03</span>
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">IT Strategy & Infrastructure</h3>
+                        <p class="service-description">From data to dashboards, our IT services help organizations meet digital goals with precision.</p>
+                        <ul class="service-features">
+                            <li>Scalable infrastructure</li>
+                            <li>Advanced data analytics</li>
+                            <li>IT governance frameworks</li>
+                            <li>Vendor procurement</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Develop Strategy</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">04</span>
+                        <div class="service-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3 class="service-title">Civil Works & Tower Construction</h3>
+                        <p class="service-description">We manage site development from the ground up with complete tower setup and infrastructure design.</p>
+                        <ul class="service-features">
+                            <li>Site preparation</li>
+                            <li>RF integration</li>
+                            <li>Access road creation</li>
+                            <li>Tower foundation</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Start Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">05</span>
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="service-title">Managed Network Support</h3>
+                        <p class="service-description">We provide lifecycle support for network equipment, maintaining manufacturer standards.</p>
+                        <ul class="service-features">
+                            <li>Preventive servicing</li>
+                            <li>24/7 monitoring</li>
+                            <li>Field support</li>
+                            <li>Power systems management</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Get Support</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">06</span>
+                        <div class="service-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 class="service-title">Coverage Optimization</h3>
+                        <p class="service-description">We implement high performance connectivity solutions that improve signal strength.</p>
+                        <ul class="service-features">
+                            <li>Distributed Antenna Systems</li>
+                            <li>External antenna setups</li>
+                            <li>Router positioning</li>
+                            <li>Signal amplifiers</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Optimize Coverage</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">07</span>
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-title">Integrated Security Systems</h3>
+                        <p class="service-description">We provide physical and cyber-secure environments through advanced monitoring.</p>
+                        <ul class="service-features">
+                            <li>CCTV monitoring</li>
+                            <li>Intrusion alarms</li>
+                            <li>Fire detection systems</li>
+                            <li>Access control</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Enhance Security</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">08</span>
+                        <div class="service-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <h3 class="service-title">Sustainable Power Systems</h3>
+                        <p class="service-description">We design and install reliable power systems to ensure uptime and reduce environmental impact.</p>
+                        <ul class="service-features">
+                            <li>Solar integration</li>
+                            <li>Hybrid power systems</li>
+                            <li>UPS and backup</li>
+                            <li>Industrial generators</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Power Operations</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card-grid">
+                        <span class="service-number">09</span>
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="service-title">Smart Facility Management</h3>
+                        <p class="service-description">We streamline building operations with centralized tools for asset tracking and maintenance.</p>
+                        <ul class="service-features">
+                            <li>Facility audits</li>
+                            <li>Maintenance frameworks</li>
+                            <li>Building automation</li>
+                            <li>Space planning</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#contact" class="btn-service">Manage Facilities</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Carousel Indicators -->
-        <div class="text-center mt-4">
-            <div class="carousel-indicators position-static mx-auto justify-content-center">
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0"
-                    class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" class="bg-primary"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" class="bg-primary"
-                    aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="3" class="bg-primary"
-                    aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="4" class="bg-primary"
-                    aria-label="Slide 5"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="5" class="bg-primary"
-                    aria-label="Slide 6"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="6" class="bg-primary"
-                    aria-label="Slide 7"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="7" class="bg-primary"
-                    aria-label="Slide 8"></button>
-                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="8" class="bg-primary"
-                    aria-label="Slide 9"></button>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
