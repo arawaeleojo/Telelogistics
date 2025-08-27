@@ -49,11 +49,11 @@
         $(window).scroll(function () {
         var scrollDistance = $(window).scrollTop() + 100;
 
-        $('section').each(function () {
-            if ($(this).position().top <= scrollDistance) {
-                var id = $(this).attr('id'); // get section id
-                $('.navbar-nav a').removeClass('active');
-                $('.navbar-nav a[href="#' + id + '"]').addClass('active');
-            }
-        });
+        // $('section').each(function () {
+        //     if ($(this).position().top <= scrollDistance) {
+        //         var id = $(this).attr('id'); // get section id
+        //         $('.navbar-nav a').removeClass('active');
+        //         $('.navbar-nav a[href="#' + id + '"]').addClass('active');
+        //     }
+        // });
         }).scroll();
